@@ -1,4 +1,4 @@
-# DevOps Assignment - ITA775
+# DevOps Assignment - ITB703
 
 ## Infrastructure
 - **Controller**: 44.193.223.96
