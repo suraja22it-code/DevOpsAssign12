@@ -41,13 +41,15 @@ Jenkins automatically builds and deploys on every push to ITA775 branch.
 ## Application Screenshots
 
 ### Login Page
-![Login Page](https://github.com/user-attachments/assets/9d620947-17a0-4e86-8e41-165d973a968a)
+![Login Page](./screenshots/login-page.png)
 
 *Modern glass morphism login interface with gradient background and floating animations*
 
-### Home Dashboard
-![Home Dashboard](https://github.com/user-attachments/assets/85fa0804-78d7-4911-9ab4-c1e9dba35e2a)
+### Home Dashboard  
+![Home Dashboard](./screenshots/home-dashboard.png)
 
 *User dashboard with success indicators and modern UI design*
+
+> **Note**: Screenshots show the modern UI with glass morphism design, gradient backgrounds, and floating animations. Upload your screenshots to the `screenshots/` folder to display them.
 
 
