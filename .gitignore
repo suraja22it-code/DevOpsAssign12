@@ -1,0 +1,26 @@
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/terraform-key.pem
+terraform/terraform.tfvars
+terraform/*.tfstate
+terraform/*.backup
+*.tfvars
+outputs.json
+
+# Django
+*.log
+settings.py
+
+# Ansible
+ansible/inventory
+
+# Docker
+init.sql
+
+# Secrets & Keys
+*.pem
+*.key
+*.pub

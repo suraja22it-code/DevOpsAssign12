@@ -1,0 +1,67 @@
+pipeline {
+    agent any
+    
+    environment {
+        DOCKER_IMAGE = 'devops_web:latest'
+        MANAGER_IP = '34.230.229.232'
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Checking out code...'
+                checkout scm
+            }
+        }
+        
+        stage('Build Docker Image') {
+            steps {
+                echo 'Building Docker image...'
+                sshagent(['terraform-ssh-key']) {
+                    sh '''
+                        ssh -o StrictHostKeyChecking=no ubuntu@${MANAGER_IP} '
+                            cd /home/ubuntu &&
+                            docker build -t ${DOCKER_IMAGE} -f docker/Dockerfile.web .
+                        '
+                    '''
+                }
+            }
+        }
+        
+        stage('Deploy to Swarm') {
+            steps {
+                echo 'Deploying to Docker Swarm...'
+                sshagent(['terraform-ssh-key']) {
+                    sh '''
+                        ssh -o StrictHostKeyChecking=no ubuntu@${MANAGER_IP} '
+                            cd /home/ubuntu/devops-app &&
+                            docker stack deploy -c docker-compose.yml devops_app
+                        '
+                    '''
+                }
+            }
+        }
+        
+        stage('Verify Deployment') {
+            steps {
+                echo 'Verifying deployment...'
+                sshagent(['terraform-ssh-key']) {
+                    sh '''
+                        ssh -o StrictHostKeyChecking=no ubuntu@${MANAGER_IP} '
+                            docker service ls
+                        '
+                    '''
+                }
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
