@@ -37,7 +37,7 @@ ansible-playbook -i inventory deploy-stack.yml
 ```
 
 ## CI/CD Pipeline
-Jenkins automatically builds and deploys on every push to ITA775 branch.
+Jenkins automatically builds and deploys on every push to ITB703 branch.
 
 ## Application Screenshots
 
