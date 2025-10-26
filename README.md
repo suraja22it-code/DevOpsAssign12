@@ -15,8 +15,9 @@ chmod +x scripts/bootstrap.sh
 ```
 
 ### Access Points:
-- **Application**: http://34.230.229.232:8000
-- **Jenkins**: http://44.193.223.96:8080
+- **Application**: http://127.0.0.1:8000 (Local Development)
+- **Docker Application**: http://localhost:8000 (Docker Compose)
+- **Jenkins**: http://44.193.223.96:8080 (Production)
 
 ## Manual Deployment
 
